@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Fashion Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">My Fashion Store</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="banner">
+        <h1>Labuan Bajo Store</h1>
+        <p>Shop the latest trends and elevate your wardrobe today.</p>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="products">
+        <h2>Categories</h2>
+        <div class="product-grid">
+            <article class="product">
+                <img src="kaosputih.jpg.jpg" alt="T-shirt">
+                <h3>Kaos Putih New York</h3>
+                <p>Rp.50.000</p>
+            </article>
+            <article class="product">
+                <img src="Kaos distro.jpg" alt="Hoodie">
+                <h3>Kaos Distro Hijau</h3>
+                <p>Rp.60.000</p>
+            </article>
+            <article class="product">
+                <img src="kaos putih distri.jpg" alt="Jeans">
+                <h3>Kaos Distro Putih</h3>
+                <p>Rp.50.000</p>
+            </article>
+        </div>
+    </section>
+
+
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="contact-title">Hubungi Kami</h2>
+        <p>We would love to hear from you! Feel free to reach out for any questions or inquiries.</p>
+
+        <!-- Contact Form -->
+        <form id="contactForm" class="contact-form" onsubmit="sendMessage(event)">
+            <label for="contactName" class="contact-label">Nama:</label>
+            <input type="text" id="contactName" name="name" required class="contact-input" />
+
+            <label for="contactEmail" class="contact-label">Email:</label>
+            <input type="email" id="contactEmail" name="email" required class="contact-input" />
+
+            <label for="contactMessage" class="contact-label">Pesan:</label>
+            <textarea id="contactMessage" name="pesan" required class="contact-textarea"></textarea>
+
+            <button type="submit" class="contact-button">Kirim</button>
+        </form>
+    </section>
+
+    <script>
+        function sendMessage(event) {
+            event.preventDefault(); // Prevent the form from submitting the normal way
+
+            // Get the form values
+            const name = document.getElementById("contactName").value;
+            const email = document.getElementById("contactEmail").value;
+            const message = document.getElementById("contactMessage").value;
+
+            // Encode the message to ensure it's properly formatted for URLs
+            const whatsappMessage = `Nama: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APesan: ${encodeURIComponent(message)}`;
+
+            const phoneNumber = '6281236921549'; // Your WhatsApp number including the country code (no + or 0 in front)
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+
+            // Open WhatsApp with the message pre-filled
+            window.open(whatsappURL, '_blank');
+
+            // Optionally, reset the form after submission
+            document.getElementById("contactForm").reset();
+        }
+    </script>
+</body>
+</html>
